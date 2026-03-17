@@ -20,7 +20,7 @@ test('homepage header navigation buttons are visible', async ({ page }) => {
     });
 });
 
-test.only ('platform dropdown opens and displays options', async ({ page }) => {
+test ('platform dropdown opens and displays options', async ({ page }) => {
     const homePage = new HomePage(page);
     const platformDropdownOptions = [
         { name: 'StackAdapt Marketing Platform', locator: homePage.stackAdaptMarketingPlatform },
