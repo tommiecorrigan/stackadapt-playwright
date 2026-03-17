@@ -1,0 +1,25 @@
+version: 2.1
+
+orbs:
+  node: circleci/node@5.0.2
+
+jobs:
+  test:
+    docker:
+      - image: mcr.microsoft.com/playwright:v1.55.0-noble
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: npm
+      - run:
+          name: Run Playwright tests
+          command: npm test
+      - store_artifacts:
+          path: playwright-report
+      - store_test_results:
+          path: test-results
+
+workflows:
+  test_workflow:
+    jobs:
+      - test
