@@ -64,7 +64,7 @@ test ('platform dropdown opens and displays options', async ({ page }) => {
 
 })
 
-test.describe.only('Platform dropdown navigation', () => {
+test.describe('Platform dropdown navigation', () => {
     let homePage;
 
     test.beforeEach(async ({ page }) => {
