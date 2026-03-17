@@ -162,7 +162,7 @@ test ('click Audio option from platform dropdown and verify url is accurate', as
     });
 })
 
-test.only ('click Video option from platform dropdown and verify url is accurate', async ({ page }) => {
+test ('click Video option from platform dropdown and verify url is accurate', async ({ page }) => {
     const homePage = new HomePage(page);
     await test.step ('Navigate to homepage', async () => {
         await homePage.goto()
@@ -176,7 +176,7 @@ test.only ('click Video option from platform dropdown and verify url is accurate
     });
 })
 
-test.only ('click Native option from platform dropdown and verify url is accurate', async ({ page }) => {
+test ('click Native option from platform dropdown and verify url is accurate', async ({ page }) => {
     const homePage = new HomePage(page);
     await test.step ('Navigate to homepage', async () => {
         await homePage.goto()
