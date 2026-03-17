@@ -31,19 +31,20 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     headless: !!process.env.CI,
-    viewport: null,
-    launchOptions: {
-          args: ['--start-maximized'],
-        },
-    trace: 'on-first-retry',
+      trace: 'on-first-retry',
+      viewport: process.env.CI ? { width: 1440, height: 900 } : null,
+      launchOptions: process.env.CI
+          ? {}
+          : {
+              args: ['--start-maximized'],
+          },
   },
 
   /* Configure projects for major browsers */
   projects: [
-    // {
-    //   name: 'chromium',
-    //   use: { ...devices['Desktop Chrome'] },
-    // },
+      {
+          name: 'chromium',
+      },
     //
     // {
     //   name: 'firefox',
@@ -55,12 +56,12 @@ export default defineConfig({
     //   use: { ...devices['Desktop Safari'] },
     // },
 
-    {
-      name: 'chrome',
-        use: {
-          channel: 'chrome'
-        }
-    }
+    // {
+    //   name: 'chrome',
+    //     use: {
+    //       channel: 'chrome'
+    //     }
+    // }
 
     /* Test against mobile viewports. */
     // {
