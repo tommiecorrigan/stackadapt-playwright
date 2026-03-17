@@ -20,49 +20,36 @@ test('homepage header navigation buttons are visible', async ({ page }) => {
     });
 });
 
-test ('platform dropdown opens and displays options', async ({ page }) => {
+test.only ('platform dropdown opens and displays options', async ({ page }) => {
     const homePage = new HomePage(page);
+    const platformDropdownOptions = [
+        { name: 'StackAdapt Marketing Platform', locator: homePage.stackAdaptMarketingPlatform },
+        { name: 'Ivy AI Marketing Assistant', locator: homePage.ivyAiMarketingAssistant },
+        { name: 'Partner Program', locator: homePage.partnerProgram },
+        { name: 'Connected TV', locator: homePage.connectedTv },
+        { name: 'Digital Out-of-Home', locator: homePage.digitalOutOfHome },
+        { name: 'Email', locator: homePage.email },
+        { name: 'Audio', locator: homePage.audio },
+        { name: 'Video', locator: homePage.video },
+        { name: 'Native', locator: homePage.native },
+        { name: 'Display', locator: homePage.display },
+        { name: 'In-Game', locator: homePage.inGame },
+    ];
     await test.step ('Navigate to homepage', async () => {
         await homePage.goto()
     });
     await test.step('Open platform menu', async () => {
         await homePage.openPlatformDropdown();
     });
-    await test.step('Verify StackAdapt Marketing Platform option displays', async () => {
-        await expect(homePage.stackAdaptMarketingPlatform).toBeVisible();
-    });
-    await test.step('Verify Ivy AI Marketing Assistant option displays', async () => {
-        await expect(homePage.ivyAiMarketingAssistant).toBeVisible();
-    });
-    await test.step('Verify Partner Program option displays', async () => {
-        await expect(homePage.partnerProgram).toBeVisible();
-    });
-    await test.step('Verify Connected TV option displays', async () => {
-        await expect(homePage.connectedTv).toBeVisible();
-    });
-    await test.step('Verify Digital Out-of-Home option displays', async () => {
-        await expect(homePage.digitalOutOfHome).toBeVisible();
-    });
-    await test.step('Verify Email option displays', async () => {
-        await expect(homePage.email).toBeVisible();
-    });
-    await test.step('Verify Audio option displays', async () => {
-        await expect(homePage.audio).toBeVisible();
-    });
-    await test.step('Verify Video option displays', async () => {
-        await expect(homePage.video).toBeVisible();
-    });
-    await test.step('Verify Native option displays', async () => {
-        await expect(homePage.native).toBeVisible();
-    });
-    await test.step('Verify Display option displays', async () => {
-        await expect(homePage.display).toBeVisible();
-    });
-    await test.step('Verify In-Game option displays', async () => {
-        await expect(homePage.inGame).toBeVisible();
+    await test.step('Verify all platform options are visible', async () => {
+        for (const option of platformDropdownOptions) {
+            await test.step(`Verify ${option.name} is visible`, async () => {
+            await expect(option.locator).toBeVisible();
+        });
+        }
     });
 
-})
+});
 
 test.describe('Platform dropdown navigation', () => {
     let homePage;

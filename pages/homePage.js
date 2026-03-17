@@ -31,6 +31,7 @@ class HomePage {
     }
     async openPlatformDropdown() {
         await this.platformButton.click();
+        await expect(this.stackAdaptMarketingPlatform).toBeVisible();
     }
     async clickStackAdaptMarketingPlatformOption() {
         await this.stackAdaptMarketingPlatform.click();
