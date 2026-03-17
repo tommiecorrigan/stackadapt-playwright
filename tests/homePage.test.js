@@ -19,3 +19,21 @@ test('homepage header navigation buttons are visible', async ({ page }) => {
         await expect(homePage.signupButton).toBeVisible();
     });
 });
+
+test ('platform dropdown opens and displays options', async ({ page }) => {
+    const homePage = new HomePage(page);
+    await test.step ('Navigate to homepage', async () => {
+        await homePage.goto()
+    });
+    await test.step('Open platform menu', async () => {
+        await homePage.openPlatformDropdown();
+    });
+    await test.step('Verify StackAdapt Marketing Platform option displays', async () => {
+        await expect(homePage.stackAdaptMarketingPlatformOption).toBeVisible();
+    });
+    await test.step('Click StackAdapt Marketing Platform option and verify url is accurate', async () => {
+        await homePage.clickStackAdaptMarketingPlatformOption();
+        await homePage.verifyStackAdaptMarketingPlatformOptionUrl();
+    })
+
+})
